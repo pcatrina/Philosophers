@@ -18,6 +18,7 @@ ph_error.c			\
 ph_utils.c			\
 read_instructions.c	\
 ph_init.c			\
+ph_destroy.c		\
 
 NAME = philo_one
 

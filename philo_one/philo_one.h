@@ -31,7 +31,7 @@
 typedef struct		s_philo
 {
 	pthread_mutex_t *left_fork;
-	pthread_mutex_t *right_for;
+	pthread_mutex_t *right_fork;
 	pthread_mutex_t eat_time_mutex;
 	pthread_t		philo_tread;
 	pthread_t 		monitoring_thread;
@@ -48,7 +48,7 @@ typedef struct		s_data
 	int				time_to_sleep;
 	int				num_to_eat;
 	t_philo 		*philo;
-	pthread_t 		out_mutex;
+	pthread_mutex_t out_mutex;
 	int				if_some_philo_die;
 	long			start_time;
 }					t_data;
@@ -59,6 +59,8 @@ extern t_data		g_data;
 int					read_instructions(int ac, char **av);
 int					ph_error(char *msg);
 int					philo_init(void);
+int 				ph_time(void);
+void				destroy_phil(void);
 
 
 //UTILS

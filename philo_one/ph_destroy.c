@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ph_destroy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcatrina <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/15 11:09:11 by pcatrina          #+#    #+#             */
-/*   Updated: 2020/12/15 11:09:14 by pcatrina         ###   ########.fr       */
+/*   Created: 2020/12/15 19:45:10 by pcatrina          #+#    #+#             */
+/*   Updated: 2020/12/15 19:45:12 by pcatrina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_one.h"
 
-t_data		g_data;
-
-int			main(int ac, char **av)
+void	destroy_phil(void)
 {
-	if (read_instructions(ac, av) == -1 || philo_init() == -1 ||
-	pthread_mutex_init(&g_data.out_mutex, NULL))
+	int i;
+
+	i = -1;
+	while (g_data.philo && (g_data.philo)[++i].left_fork && (++i < g_data.num_philo))
 	{
-		destroy_phil();
-		return (1);
+		pthread_mutex_destroy((g_data.philo)[i].left_fork);
+		free((g_data.philo)[i].left_fork);
+		(g_data.philo)[i].left_fork = NULL;
+		pthread_mutex_destroy(&(g_data.philo)[i].eat_time_mutex);
 	}
-	return (0);
+	free(g_data.philo);
 }
