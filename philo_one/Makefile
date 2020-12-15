@@ -19,6 +19,8 @@ ph_utils.c			\
 read_instructions.c	\
 ph_init.c			\
 ph_destroy.c		\
+ph_treads.c			\
+ph_life.c			\
 
 NAME = philo_one
 

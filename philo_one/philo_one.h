@@ -61,6 +61,10 @@ int					ph_error(char *msg);
 int					philo_init(void);
 int 				ph_time(void);
 void				destroy_phil(void);
+void				ph_treads(void);
+void				ph_threads_join(void);
+void				*ph_life(void *philo);
+void				*ph_monitor(void *philo);
 
 
 //UTILS

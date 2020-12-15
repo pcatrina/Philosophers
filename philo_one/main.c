@@ -22,5 +22,9 @@ int			main(int ac, char **av)
 		destroy_phil();
 		return (1);
 	}
+	ph_treads();
+	ph_threads_join();
+	destroy_phil();
+	pthread_mutex_destroy(&g_data.out_mutex);
 	return (0);
 }
