@@ -35,7 +35,7 @@ int					mutex_init(int i)
 {
 	if (!((g_data.philo)[i].left_fork = ft_calloc(1, sizeof(pthread_mutex_t))))
 		return (ph_error(PH_FATAL_ER));
-	if (!pthread_mutex_init((g_data.philo)[i].left_fork, NULL))
+	if (pthread_mutex_init((g_data.philo)[i].left_fork, NULL))
 	{
 		free((g_data.philo)[i].left_fork);
 		(g_data.philo)[i].left_fork = NULL;

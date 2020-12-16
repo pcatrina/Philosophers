@@ -20,7 +20,19 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
+# include <string.h>
 
+//STATUS
+# define PH_TAKE_FORK 0
+# define PH_PUT_FORK 1
+# define PH_EAT	3
+# define PH_SLEEPING 4
+# define PH_THINKING 5
+# define PH_DEAD 6
+# define PH_BUFF 50
+# define PH_MON_DEL 500
+
+//ERRORS
 # define PH_ERROR_INIT "error: "
 # define PH_FATAL_ER "FATAL ERROR"
 # define PH_ER_NUM_ARG "wrong numbers of arguments"
@@ -65,6 +77,8 @@ void				ph_treads(void);
 void				ph_threads_join(void);
 void				*ph_life(void *philo);
 void				*ph_monitor(void *philo);
+void				swap_status(int status, t_philo *philo);
+void				ph_write_status(int time, int status, t_philo *philo);
 
 
 //UTILS
@@ -73,6 +87,9 @@ int					ft_isdigit(int c);
 int					ft_atoi(const char *nptr);
 void				*ft_calloc(size_t nmemb, size_t size);
 void				ft_bzero(void *s, size_t len);
+void				ft_putsrt_to_buf(char *str, char *buf);
+char				*ft_itoa(int n);
+void				ft_free_str(char *str);
 
 
 # endif //PHILO_ONE_H

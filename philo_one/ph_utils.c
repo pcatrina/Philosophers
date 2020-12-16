@@ -58,3 +58,22 @@ void	ft_bzero(void *s, size_t len)
 	while (++i < len)
 		str[i] = 0;
 }
+
+void	ft_putsrt_to_buf(char *str, char *buf)
+{
+	int i;
+
+	i = ft_strlen(buf);
+	while (str)
+	{
+		buf[i] = *str;
+		i++;
+		str++;
+	}
+}
+
+void	ft_free_str(char *str)
+{
+	free(str);
+	str = NULL;
+}
