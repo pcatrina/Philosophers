@@ -16,15 +16,16 @@ MAIN_SOURCES =		\
 main.c				\
 ph_error.c			\
 ph_utils.c			\
-read_instructions.c	\
+ph_read_instructions.c	\
 ph_init.c			\
 ph_destroy.c		\
 ph_treads.c			\
 ph_life.c			\
-ft_itoa.c			\
+ph_itoa.c			\
 ph_status.c			\
 ph_status_write.c	\
 ph_monitor.c		\
+ph_putstr_buf.c		\
 
 NAME = philo_one
 

@@ -19,10 +19,10 @@ void		ph_treads(void)
 	i = -1;
 	while (++i < g_data.num_philo)
 	{
-		pthread_create(&g_data.philo[i].philo_tread, NULL, ph_life, g_data
-		.philo + i);
-		pthread_create(&g_data.philo[i].monitoring_thread, NULL, ph_monitor
-				 , g_data.philo + i);
+		pthread_create(&g_data.philo[i].philo_tread, NULL, ph_life, \
+				g_data.philo + i);
+		pthread_create(&g_data.philo[i].monitoring_thread, NULL, \
+				ph_monitor, g_data.philo + i);
 	}
 }
 

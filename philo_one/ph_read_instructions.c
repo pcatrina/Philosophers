@@ -12,7 +12,7 @@
 
 #include "philo_one.h"
 
-int		ft_isdigit(int c)
+int			ft_isdigit(int c)
 {
 	return ((c >= 48 && c <= 57) ? 1 : 0);
 }
@@ -23,12 +23,12 @@ static int	is_number(char *str)
 
 	i = -1;
 	while (str[++i])
-		if(!ft_isdigit(str[i]))
+		if (!ft_isdigit(str[i]))
 			return (0);
 	return (1);
 }
 
-int		read_instructions(int ac, char **av)
+int			read_instructions(int ac, char **av)
 {
 	int i;
 

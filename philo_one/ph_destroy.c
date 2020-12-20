@@ -17,7 +17,8 @@ void	destroy_phil(void)
 	int i;
 
 	i = -1;
-	while (g_data.philo && (g_data.philo)[++i].left_fork && (++i < g_data.num_philo))
+	while (g_data.philo && (g_data.philo)[++i].left_fork && \
+							(++i < g_data.num_philo))
 	{
 		pthread_mutex_destroy((g_data.philo)[i].left_fork);
 		free((g_data.philo)[i].left_fork);

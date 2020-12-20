@@ -14,20 +14,21 @@
 
 void		*ph_monitor(void *philo)
 {
-	int	last_time;
-	int current_time;
+	long	last_time;
+	long	current_time;
 
 	while (1)
 	{
-		if (g_data.if_some_philo_die)
+		if (g_data.if_some_philo_die || g_data.num_to_eat == ((t_philo *)
+		philo)->num_of_eat)
 			break ;
 		pthread_mutex_lock(&((t_philo *)philo)->eat_time_mutex);
 		last_time = ((t_philo *)philo)->last_time_eat;
 		current_time = ph_time();
-		if((current_time - last_time) > g_data.time_to_die)
-			swap_status(PH_DEAD, (t_philo *)philo);
+		if ((current_time - last_time) > g_data.time_to_die)
+			ph_swap_status(PH_DEAD, (t_philo *)philo);
 		pthread_mutex_unlock(&((t_philo *)philo)->eat_time_mutex);
-		usleep(PH_MON_DEL);
+		ph_usleep(PH_MON_DEL);
 	}
 	return (0);
 }

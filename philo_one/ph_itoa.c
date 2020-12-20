@@ -12,7 +12,7 @@
 
 #include "philo_one.h"
 
-static int 		ft_len(int n)
+static int		ft_len(int n)
 {
 	int	len;
 

@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-int	ft_atoi(const char *nptr)
+int		ft_atoi(const char *nptr)
 {
 	long long	res;
 	int			i;
@@ -64,16 +64,10 @@ void	ft_putsrt_to_buf(char *str, char *buf)
 	int i;
 
 	i = ft_strlen(buf);
-	while (str)
+	while (*str)
 	{
 		buf[i] = *str;
 		i++;
 		str++;
 	}
-}
-
-void	ft_free_str(char *str)
-{
-	free(str);
-	str = NULL;
 }

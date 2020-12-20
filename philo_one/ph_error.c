@@ -12,10 +12,10 @@
 
 #include "philo_one.h"
 
-int		ph_error(char *msg)
+int		ph_error(char *str)
 {
-	write (2, PH_ERROR_INIT, ft_strlen(PH_ERROR_INIT));
-	write (2, msg, ft_strlen(msg));
-	write (2, "\n", 1);
+	write(2, PH_ERROR_INIT, ft_strlen(PH_ERROR_INIT));
+	write(2, str, ft_strlen(str));
+	write(2, "\n", 1);
 	return (-1);
 }

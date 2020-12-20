@@ -12,15 +12,34 @@
 
 #include "philo_one.h"
 
-void	swap_status(int status, t_philo *philo)
+static	void	if_philo_ate(int i)
 {
-	int	time;
+	if (i < g_data.num_to_eat)
+		return ;
+	if (i > g_data.num_to_eat)
+		g_data.if_some_philo_die = 1;
+}
+
+void			ph_swap_status(int status, t_philo *philo)
+{
+	long	time;
 
 	pthread_mutex_lock(&g_data.out_mutex);
 	if (!g_data.if_some_philo_die)
 	{
-		time = ph_time();
-		ph_write_status(time, status, philo);
+		time = ph_time() - g_data.start_time;
+		ph_write_status((int)time, status, philo);
+		if (status == PH_EAT)
+		{
+			philo->last_time_eat = ph_time();
+			if (g_data.num_to_eat != -1)
+			{
+				philo->num_of_eat++;
+				if_philo_ate(philo->num_of_eat);
+			}
+		}
+		else if (status == PH_DEAD)
+			g_data.if_some_philo_die = 1;
 	}
 	pthread_mutex_unlock(&g_data.out_mutex);
 }

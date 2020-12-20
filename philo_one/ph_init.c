@@ -13,22 +13,14 @@
 #include <sys/time.h>
 #include "philo_one.h"
 
-static void 		init_start_time(void)
+long				ph_time(void)
 {
 	struct timeval	tv;
+	long			time;
 
 	gettimeofday(&tv, NULL);
-	g_data.start_time = tv.tv_sec * 1000 + tv.tv_usec / 1000;
-}
-
-int 				ph_time(void)
-{
-	struct timeval	tv;
-	long 			current_time;
-
-	gettimeofday(&tv, NULL);
-	current_time = tv.tv_sec * 1000 + tv.tv_usec / 1000;
-	return ((int)current_time);
+	time = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+	return (time);
 }
 
 int					mutex_init(int i)
@@ -53,13 +45,13 @@ int					mutex_init(int i)
 
 int					philo_init(void)
 {
-	int		i;
-	int		real_time;
+	int			i;
+	long		real_time;
 
 	i = -1;
 	if (!(g_data.philo = ft_calloc(g_data.num_philo, sizeof(t_philo))))
 		return (ph_error(PH_FATAL_ER));
-	init_start_time();
+	g_data.start_time = ph_time();
 	real_time = ph_time();
 	while (++i < g_data.num_philo)
 	{
@@ -68,7 +60,7 @@ int					philo_init(void)
 		if (mutex_init(i) == -1)
 			return (ph_error(PH_FATAL_ER));
 		if (i > 0)
-			(g_data.philo)[i].left_fork = (g_data.philo)[i - 1].right_fork;
+			(g_data.philo)[i].right_fork = (g_data.philo)[i - 1].left_fork;
 	}
 	(g_data.philo)[0].right_fork = (g_data.philo)[g_data.num_philo - 1]
 			.left_fork;
