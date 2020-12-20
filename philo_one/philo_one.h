@@ -25,7 +25,7 @@
 # define PH_THINKING 5
 # define PH_DEAD 6
 # define PH_BUFF 100
-# define PH_MON_DEL 2
+# define PH_MON_DEL 5
 
 # define PH_LINE_TAKE "has taken a fork"
 # define PH_LINE_EAT "is eating"

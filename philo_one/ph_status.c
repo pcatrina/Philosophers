@@ -28,7 +28,6 @@ void			ph_swap_status(int status, t_philo *philo)
 	if (!g_data.if_some_philo_die)
 	{
 		time = ph_time() - g_data.start_time;
-		ph_write_status((int)time, status, philo);
 		if (status == PH_EAT)
 		{
 			philo->last_time_eat = ph_time();
@@ -40,6 +39,7 @@ void			ph_swap_status(int status, t_philo *philo)
 		}
 		else if (status == PH_DEAD)
 			g_data.if_some_philo_die = 1;
+		ph_write_status((int)time, status, philo);
 	}
 	pthread_mutex_unlock(&g_data.out_mutex);
 }
